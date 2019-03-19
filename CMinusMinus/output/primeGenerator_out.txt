@@ -1,4 +1,4 @@
-#source "primeGenerator.txt"
+#source "examples/primeGenerator.txt"
 
 	call main
 	halt

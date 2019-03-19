@@ -24,9 +24,9 @@ void main() {
 	write array[0], '\n';
 	
 	// Struct pointer
-	int* p;
-	p = &test.a;
-	*p = 13 * n;
+	int* p2;
+	p2 = &test.a;
+	*p2 = 13 * n;
 	// Should print '13'
 	write test.a;
 	

@@ -1,0 +1,114 @@
+#source "examples/pointers.txt"
+
+	call main
+	halt
+
+#line 3
+	
+main:
+#func main
+	enter 15
+#ret void
+#local test:{
+	a:int
+}
+
+#local array:5*char
+#local n:int
+
+#line 13
+	pushi -9
+	pusha bp
+	add
+	pushi 42
+	storei
+#local p:address
+
+#line 15
+	pushi -11
+	pusha bp
+	add
+	pushi -9
+	pusha bp
+	add
+	storei
+
+#line 17
+	pushi -11
+	pusha bp
+	add
+	loadi
+	loadi
+	outi
+	pushb 10
+	outb
+#local pArray:address
+
+#line 21
+	pushi -13
+	pusha bp
+	add
+	pushi -7
+	pusha bp
+	add
+	storei
+
+#line 22
+	pushi -13
+	pusha bp
+	add
+	loadi
+	pushi 0
+	push 1
+	mul
+	add
+	pushb 97
+	storeb
+
+#line 24
+	pushi -7
+	pusha bp
+	add
+	pushi 0
+	push 1
+	mul
+	add
+	loadb
+	outb
+	pushb 10
+	outb
+#local p2:address
+
+#line 28
+	pushi -15
+	pusha bp
+	add
+	pushi -2
+	pusha bp
+	add
+	pushi 0
+	add
+	storei
+
+#line 29
+	pushi -15
+	pusha bp
+	add
+	loadi
+	pushi 13
+	pushi -9
+	pusha bp
+	add
+	loadi
+	muli
+	storei
+
+#line 31
+	pushi -2
+	pusha bp
+	add
+	pushi 0
+	add
+	loadi
+	outi
+	ret 0,15,0

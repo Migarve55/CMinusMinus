@@ -1,0 +1,51 @@
+#source "examples/passByReference.txt"
+
+	call main
+	halt
+
+#line 2
+	
+f:
+#func f
+#ret void
+#param p:address
+
+#line 3
+	pushi 4
+	pusha bp
+	add
+	loadi
+	pushi 42
+	storei
+	ret 0,0,2
+
+#line 6
+	
+main:
+#func main
+	enter 2
+#ret void
+#local n:int
+
+#line 8
+	pushi -2
+	pusha bp
+	add
+	pushi 0
+	storei
+
+#line 9
+	pushi -2
+	pusha bp
+	add
+	call f
+
+#line 10
+	pushi -2
+	pusha bp
+	add
+	loadi
+	outi
+	pushb 10
+	outb
+	ret 0,2,0

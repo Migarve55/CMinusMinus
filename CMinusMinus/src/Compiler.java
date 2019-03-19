@@ -22,9 +22,13 @@ import semantic.TypeVisitor;
 public class Compiler {
 
 	public static void main(String[] args) {
+		
+		//Change this to compile another program
+		String program = "passByReference";
+		
 		Compiler compiler = new Compiler();
 		try {
-			compiler.compile("primeGenerator.txt", "outputPrimes.txt");
+			compiler.compile("examples/" + program + ".txt", "output/" + program + "_out.txt");
 		} catch (IOException e) {
 			System.err.println("Could not compile:");
 			e.printStackTrace();

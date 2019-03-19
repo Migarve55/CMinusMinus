@@ -1,0 +1,184 @@
+#source "examples/helloWorld.txt"
+
+	call main
+	halt
+#global word:16*char
+
+#line 5
+	
+main:
+#func main
+	enter 4
+#ret void
+#local length:int
+#local i:int
+
+#line 7
+	pushi -2
+	pusha bp
+	add
+	pushi 16
+	storei
+
+#line 0
+
+#line 9
+	pushi -4
+	pusha bp
+	add
+	pushi 0
+	storei
+f0:
+	pushi -4
+	pusha bp
+	add
+	loadi
+	pushi -2
+	pusha bp
+	add
+	loadi
+	lti
+	jz out0
+
+#line 10
+	pushi 0
+	pushi -4
+	pusha bp
+	add
+	loadi
+	push 1
+	mul
+	add
+	inb
+	storeb
+
+#line 11
+	pushi 0
+	pushi -4
+	pusha bp
+	add
+	loadi
+	push 1
+	mul
+	add
+	loadb
+	b2i
+	pushb 10
+	b2i
+	eqi
+	jz out1
+
+#line 12
+	pushi -4
+	pusha bp
+	add
+	pushi -2
+	pusha bp
+	add
+	loadi
+	storei
+out1:
+
+#line 9
+	pushi -4
+	pusha bp
+	add
+	pushi -4
+	pusha bp
+	add
+	loadi
+	pushi 1
+	addi
+	storei
+	jmp f0:
+out0:
+
+#line 15
+	pushb 72
+	outb
+	pushb 101
+	outb
+	pushb 108
+	outb
+	pushb 108
+	outb
+	pushb 111
+	outb
+	pushb 32
+	outb
+
+#line 0
+
+#line 16
+	pushi -4
+	pusha bp
+	add
+	pushi 0
+	storei
+f2:
+	pushi -4
+	pusha bp
+	add
+	loadi
+	pushi -2
+	pusha bp
+	add
+	loadi
+	lti
+	jz out2
+
+#line 17
+	pushi 0
+	pushi -4
+	pusha bp
+	add
+	loadi
+	push 1
+	mul
+	add
+	loadb
+	b2i
+	pushb 10
+	b2i
+	eqi
+	jz else3
+
+#line 18
+	pushi -4
+	pusha bp
+	add
+	pushi -2
+	pusha bp
+	add
+	loadi
+	storei
+	jmp out3
+else3:
+
+#line 20
+	pushi 0
+	pushi -4
+	pusha bp
+	add
+	loadi
+	push 1
+	mul
+	add
+	loadb
+	outb
+out3:
+
+#line 16
+	pushi -4
+	pusha bp
+	add
+	pushi -4
+	pusha bp
+	add
+	loadi
+	pushi 1
+	addi
+	storei
+	jmp f2:
+out2:
+	ret 0,4,0

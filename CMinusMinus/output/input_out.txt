@@ -1,4 +1,4 @@
-#source "input.txt"
+#source "examples/input.txt"
 
 	call main
 	halt
