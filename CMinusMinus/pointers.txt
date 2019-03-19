@@ -1,0 +1,17 @@
+int n;
+
+// * Main function
+void main() {
+	char[5] array;
+	n = 12;
+	int* p;
+	p = &n;
+	//Should print '12'
+	write *p, '\n';
+	//Con el array
+	char[5]* pArray;
+	pArray = &array;
+	(*pArray)[0] = 'a';
+	//Should print 'a'
+	write array[0], '\n';
+}

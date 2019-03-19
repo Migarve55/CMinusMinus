@@ -1,0 +1,72 @@
+#source "pointers.txt"
+
+	call main
+	halt
+#global n:int
+
+#line 4
+	
+main:
+#func main
+	enter 9
+#ret void
+#local array:5*char
+
+#line 6
+	pushi 0
+	pushi 12
+	storei
+#local p:address
+
+#line 8
+	pushi -7
+	pusha bp
+	add
+	pushi 0
+	storei
+
+#line 10
+	pushi -7
+	pusha bp
+	add
+	loadi
+	loadi
+	outi
+	pushb 10
+	outb
+#local pArray:address
+
+#line 13
+	pushi -9
+	pusha bp
+	add
+	pushi -5
+	pusha bp
+	add
+	storei
+
+#line 14
+	pushi -9
+	pusha bp
+	add
+	loadi
+	pushi 0
+	push 1
+	mul
+	add
+	pushb 97
+	storeb
+
+#line 16
+	pushi -5
+	pusha bp
+	add
+	pushi 0
+	push 1
+	mul
+	add
+	loadb
+	outb
+	pushb 10
+	outb
+	ret 0,9,0

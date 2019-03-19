@@ -1,0 +1,21 @@
+
+int isPrime(int n) {
+	int i, prime;
+	prime = 1;
+	for (i = 2;i < n;i = i + 1) {
+		if (n % i == 0)
+	    	prime = 0;
+	}
+	return prime;
+}
+
+// * Main function
+void main() {
+	int i, max;
+	read max;
+	for (i = 1;i < max;i = i + 1) {
+		if (isPrime(i))
+	    	write i, '\n';
+	}
+}
+  

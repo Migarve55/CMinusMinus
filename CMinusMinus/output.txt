@@ -1,0 +1,327 @@
+#source "input.txt"
+
+	call main
+	halt
+#global v:10*real
+
+#line 4
+	
+main:
+#func main
+	enter 54
+#ret void
+#local value:real
+#local i:int
+#local j:int
+#local w:5*4*int
+#local date:{
+	day:int
+	month:int
+	year:int
+}
+
+
+#line 13
+	pushi -54
+	pusha bp
+	add
+	pushi 0
+	add
+	ini
+	storei
+
+#line 14
+	pushi -54
+	pusha bp
+	add
+	pushi 4
+	add
+	pushb 97
+	b2i
+	storei
+
+#line 15
+	pushi -54
+	pusha bp
+	add
+	pushi 2
+	add
+	pushi -54
+	pusha bp
+	add
+	pushi 0
+	add
+	loadi
+	pushi -54
+	pusha bp
+	add
+	pushi 4
+	add
+	loadi
+	muli
+	pushi 12
+	mod
+	pushi 1
+	addi
+	storei
+
+#line 16
+	pushi -54
+	pusha bp
+	add
+	pushi 0
+	add
+	loadi
+	outi
+	pushb 10
+	outb
+	pushi -54
+	pusha bp
+	add
+	pushi 2
+	add
+	loadi
+	outi
+	pushb 10
+	outb
+	pushi -54
+	pusha bp
+	add
+	pushi 4
+	add
+	loadi
+	i2f
+	outf
+	pushb 10
+	outb
+
+#line 18
+	pushi -4
+	pusha bp
+	add
+	inf
+	storef
+
+#line 20
+	pushi -6
+	pusha bp
+	add
+	pushi 0
+	storei
+
+#line 21
+w0:
+	pushi -6
+	pusha bp
+	add
+	loadi
+	pushi 10
+	lti
+	jz out0
+
+#line 22
+	pushi 0
+	pushi -6
+	pusha bp
+	add
+	loadi
+	push 4
+	mul
+	add
+	pushi -4
+	pusha bp
+	add
+	loadf
+	storef
+
+#line 23
+	pushi -6
+	pusha bp
+	add
+	loadi
+	outi
+	pushb 58
+	outb
+	pushi 0
+	pushi -6
+	pusha bp
+	add
+	loadi
+	push 4
+	mul
+	add
+	loadf
+	outf
+	pushb 32
+	outb
+
+#line 24
+	pushi -6
+	pusha bp
+	add
+	loadi
+	pushi 2
+	mod
+	jz else1
+
+#line 25
+	pushb 111
+	outb
+	pushb 100
+	outb
+	pushb 100
+	outb
+	pushb 10
+	outb
+	jmp out1
+else1:
+
+#line 27
+	pushb 101
+	outb
+	pushb 118
+	outb
+	pushb 101
+	outb
+	pushb 110
+	outb
+	pushb 10
+	outb
+out1:
+
+#line 28
+	pushi -6
+	pusha bp
+	add
+	pushi -6
+	pusha bp
+	add
+	loadi
+	pushi 1
+	addi
+	storei
+	jmp w0:
+out0:
+
+#line 30
+	pushb 10
+	outb
+
+#line 32
+	pushi -6
+	pusha bp
+	add
+	pushi 0
+	storei
+
+#line 33
+w2:
+	pushi -6
+	pusha bp
+	add
+	loadi
+	pushi 4
+	lti
+	jz out2
+
+#line 34
+	pushi -8
+	pusha bp
+	add
+	pushi 0
+	storei
+
+#line 35
+w3:
+	pushi -8
+	pusha bp
+	add
+	loadi
+	pushi 5
+	lti
+	jz out3
+
+#line 36
+	pushi -48
+	pusha bp
+	add
+	pushi -6
+	pusha bp
+	add
+	loadi
+	push 8
+	mul
+	add
+	pushi -8
+	pusha bp
+	add
+	loadi
+	push 2
+	mul
+	add
+	pushi -6
+	pusha bp
+	add
+	loadi
+	pushi -8
+	pusha bp
+	add
+	loadi
+	addi
+	storei
+
+#line 37
+	pushi -48
+	pusha bp
+	add
+	pushi -6
+	pusha bp
+	add
+	loadi
+	push 8
+	mul
+	add
+	pushi -8
+	pusha bp
+	add
+	loadi
+	push 2
+	mul
+	add
+	loadi
+	outi
+	pushb 32
+	outb
+
+#line 38
+	pushi -8
+	pusha bp
+	add
+	pushi -8
+	pusha bp
+	add
+	loadi
+	pushi 1
+	addi
+	storei
+	jmp w3:
+out3:
+
+#line 40
+	pushb 10
+	outb
+
+#line 41
+	pushi -6
+	pusha bp
+	add
+	pushi -6
+	pusha bp
+	add
+	loadi
+	pushi 1
+	addi
+	storei
+	jmp w2:
+out2:
+	ret 0,54,0

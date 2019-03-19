@@ -1,0 +1,153 @@
+#source "primeGenerator.txt"
+
+	call main
+	halt
+
+#line 2
+	
+isPrime:
+#func isPrime
+	enter 4
+#ret int
+#param n:int
+#local i:int
+#local prime:int
+
+#line 4
+	pushi -4
+	pusha bp
+	add
+	pushi 1
+	storei
+
+#line 0
+
+#line 5
+	pushi -2
+	pusha bp
+	add
+	pushi 2
+	storei
+f0:
+	pushi -2
+	pusha bp
+	add
+	loadi
+	pushi 4
+	pusha bp
+	add
+	loadi
+	lti
+	jz out0
+
+#line 6
+	pushi 4
+	pusha bp
+	add
+	loadi
+	pushi -2
+	pusha bp
+	add
+	loadi
+	mod
+	pushi 0
+	eqi
+	jz out1
+
+#line 7
+	pushi -4
+	pusha bp
+	add
+	pushi 0
+	storei
+out1:
+
+#line 5
+	pushi -2
+	pusha bp
+	add
+	pushi -2
+	pusha bp
+	add
+	loadi
+	pushi 1
+	addi
+	storei
+	jmp f0:
+out0:
+
+#line 9
+	pushi -4
+	pusha bp
+	add
+	loadi
+	ret 2,4,2
+
+#line 13
+	
+main:
+#func main
+	enter 4
+#ret void
+#local i:int
+#local max:int
+
+#line 15
+	pushi -4
+	pusha bp
+	add
+	ini
+	storei
+
+#line 0
+
+#line 16
+	pushi -2
+	pusha bp
+	add
+	pushi 1
+	storei
+f2:
+	pushi -2
+	pusha bp
+	add
+	loadi
+	pushi -4
+	pusha bp
+	add
+	loadi
+	lti
+	jz out2
+
+#line 17
+	pushi -2
+	pusha bp
+	add
+	loadi
+	call isPrime
+	jz out3
+
+#line 18
+	pushi -2
+	pusha bp
+	add
+	loadi
+	outi
+	pushb 10
+	outb
+out3:
+
+#line 16
+	pushi -2
+	pusha bp
+	add
+	pushi -2
+	pusha bp
+	add
+	loadi
+	pushi 1
+	addi
+	storei
+	jmp f2:
+out2:
+	ret 0,4,0
