@@ -4,15 +4,8 @@ void f(int* p) {
 }
 
 void main() {
-	struct {
-		int a;
-	} test;
 	int n;
 	n = 0;
 	f(&n);
 	write n, '\n';
-	int* p;
-	p = &test.a;
-	*p = 13 * n;
-	write test.a;
 }

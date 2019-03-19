@@ -1,25 +1,22 @@
-int length, i;
+
 char[16] word;
 
-// * Main function
+// Main function
 void main() {
+	int length, i;
 	length = 16;
 	//Leer
-	i = 0;
-	while (i < length) {
+	for (i = 0;i < length;i = i + 1) {
 		read word[i];
 		if ((int)word[i] == (int)'\n')
 			i = length;
-		i = i + 1;
 	}
 	//Imprimir
-	write 'H' ,'o', 'l', 'a', ' ';
-	i = 0;
-	while (i < length) {
+	write 'H' ,'e', 'l', 'l', 'o', ' ';
+	for (i = 0;i < length;i = i + 1) {
 		if ((int)word[i] == (int)'\n')
 			i = length;
 		else
 			write word[i];
-		i = i + 1;
 	}
 }

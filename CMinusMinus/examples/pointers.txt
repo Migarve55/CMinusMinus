@@ -1,0 +1,33 @@
+
+// Main function
+void main() {
+
+    // Vars
+	struct {
+		int a;
+	} test;
+	char[5] array;
+	int n;
+	
+	// Basic pointer
+	n = 42;
+	int* p;
+	p = &n;
+	// Should print '42'
+	write *p, '\n';
+	
+	// Array pointer
+	char[5]* pArray;
+	pArray = &array;
+	(*pArray)[0] = 'a';
+	// Should print 'a'
+	write array[0], '\n';
+	
+	// Struct pointer
+	int* p;
+	p = &test.a;
+	*p = 13 * n;
+	// Should print '13'
+	write test.a;
+	
+}
