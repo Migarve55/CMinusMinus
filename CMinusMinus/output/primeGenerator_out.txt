@@ -7,22 +7,14 @@
 	
 isPrime:
 #func isPrime
-	enter 4
+	enter 2
 #ret int
 #param n:int
 #local i:int
-#local prime:int
-
-#line 4
-	pushi -4
-	pusha bp
-	add
-	pushi 1
-	storei
 
 #line 0
 
-#line 5
+#line 4
 	pushi -2
 	pusha bp
 	add
@@ -40,7 +32,7 @@ f0:
 	lti
 	jz out0
 
-#line 6
+#line 5
 	pushi 4
 	pusha bp
 	add
@@ -54,15 +46,12 @@ f0:
 	eqi
 	jz out1
 
-#line 7
-	pushi -4
-	pusha bp
-	add
+#line 6
 	pushi 0
-	storei
+	ret 2,2,2
 out1:
 
-#line 5
+#line 4
 	pushi -2
 	pusha bp
 	add
@@ -76,14 +65,11 @@ out1:
 	jmp f0:
 out0:
 
-#line 9
-	pushi -4
-	pusha bp
-	add
-	loadi
-	ret 2,4,2
+#line 8
+	pushi 1
+	ret 2,2,2
 
-#line 13
+#line 12
 	
 main:
 #func main
@@ -92,7 +78,7 @@ main:
 #local i:int
 #local max:int
 
-#line 15
+#line 14
 	pushi -4
 	pusha bp
 	add
@@ -101,7 +87,7 @@ main:
 
 #line 0
 
-#line 16
+#line 15
 	pushi -2
 	pusha bp
 	add
@@ -119,7 +105,7 @@ f2:
 	lti
 	jz out2
 
-#line 17
+#line 16
 	pushi -2
 	pusha bp
 	add
@@ -127,7 +113,7 @@ f2:
 	call isPrime
 	jz out3
 
-#line 18
+#line 17
 	pushi -2
 	pusha bp
 	add
@@ -137,7 +123,7 @@ f2:
 	outb
 out3:
 
-#line 16
+#line 15
 	pushi -2
 	pusha bp
 	add

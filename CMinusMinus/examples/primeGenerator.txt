@@ -1,12 +1,11 @@
 
 int isPrime(int n) {
-	int i, prime;
-	prime = 1;
+	int i;
 	for (i = 2;i < n;i = i + 1) {
 		if (n % i == 0)
-	    	prime = 0;
+	    	return 0; // False
 	}
-	return prime;
+	return 1; // True
 }
 
 // * Main function

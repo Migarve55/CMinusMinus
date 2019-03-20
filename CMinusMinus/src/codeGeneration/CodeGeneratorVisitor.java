@@ -20,6 +20,8 @@ import ast.expresions.IntLiteral;
 import ast.expresions.StructAccess;
 import ast.expresions.UnaryOperator;
 import ast.statements.Assignment;
+import ast.statements.Break;
+import ast.statements.Continue;
 import ast.statements.For;
 import ast.statements.If;
 import ast.statements.Invocation;
@@ -157,11 +159,13 @@ public class CodeGeneratorVisitor extends AstVisitorDefaultImpl<Boolean, Boolean
 	public Boolean visit(While whileStat, Boolean param) {
 		printLine(whileStat);
 		int ctg = conditionalTagCounter++;
-		out.printf("w%d:%n", ctg);
+		whileStat.setLabelId(ctg);
+		out.printf("loop%d:%n", ctg);
 		whileStat.getCondition().accept(this, true);
 		printInstruction("jz out%d", ctg);
 		whileStat.getBody().forEach(stat -> stat.accept(this, param));
-		printInstruction("jmp w%d:", ctg);
+		out.printf("endLoop%d:%n", ctg);
+		printInstruction("jmp loop%d", ctg);
 		out.printf("out%d:%n", ctg);
 		return null;
 	}
@@ -180,18 +184,33 @@ public class CodeGeneratorVisitor extends AstVisitorDefaultImpl<Boolean, Boolean
 	public Boolean visit(For forStat, Boolean param) {
 		printLine(forStat);
 		int ctg = conditionalTagCounter++;
+		forStat.setLabelId(ctg);
 		forStat.getVars().accept(this, param);
-		out.printf("f%d:%n", ctg);
+		out.printf("loop%d:%n", ctg);
 		forStat.getCondition().accept(this, true);
 		printInstruction("jz out%d", ctg);
 		forStat.getBody().forEach(stat -> stat.accept(this, param));
+		out.printf("endLoop%d:%n", ctg);
 		forStat.getIncrement().accept(this, param);
-		printInstruction("jmp f%d:", ctg);
+		printInstruction("jmp loop%d", ctg);
 		out.printf("out%d:%n", ctg);
 		return null;
 	}
 	
+	@Override
+	public Boolean visit(Break breakStat, Boolean param) {
+		printInstruction("jmp out%d", breakStat.getParentLoop().getLabelId());
+		return null;
+	}
+
+	@Override
+	public Boolean visit(Continue continueStat, Boolean param) {
+		printInstruction("jmp endLoop%d", continueStat.getParentLoop().getLabelId());
+		return null;
+	}
+	
 	//Expresions
+
 
 	@Override
 	public Boolean visit(ArrayAccess arrayAccess, Boolean loadValue) {

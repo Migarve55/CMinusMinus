@@ -18,6 +18,7 @@ import semantic.ErrorHandler;
 import semantic.FunctionVisitor;
 import semantic.IdentificationVisitor;
 import semantic.LValueVisitor;
+import semantic.LoopsVisitor;
 import semantic.TypeVisitor;
 
 public class Compiler {
@@ -25,7 +26,7 @@ public class Compiler {
 	public static void main(String[] args) {
 		
 		//Change this to compile another program
-		String program = "functions";
+		String program = "loops";
 		
 		Compiler compiler = new Compiler();
 		try {
@@ -64,6 +65,8 @@ public class Compiler {
 		if (!visit(new TypeVisitor(), program.ast, null))
 			return;
 		if (!visit(new FunctionVisitor(), program.ast, null))
+			return;
+		if (!visit(new LoopsVisitor(), program.ast, null))
 			return;
 
 		// Code generation

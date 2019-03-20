@@ -96,6 +96,8 @@ statment returns [Statment ast]:
         | t='read' expr ';'                   					{ $ast = new Read($expr.ast); $ast.setLine($t.line); $ast.setColumn($t.getCharPositionInLine() + 1); }
         | ID t='(' args ')' ';'               					{ $ast = new Invocation($ID.text, $args.ast); $ast.setLine($t.line); $ast.setColumn($t.getCharPositionInLine() + 1); }
         | t='for' '(' vars=assigment ';' cond=expr ';' incr=assigment ')' block	{ $ast = new For($vars.ast,$cond.ast,$incr.ast,$block.ast); $ast.setColumn($t.getCharPositionInLine() + 1); }
+        | t='break' ';'											{ $ast = new Break(); $ast.setColumn($t.getCharPositionInLine() + 1); }
+        | t='continue' ';'										{ $ast = new Continue(); $ast.setColumn($t.getCharPositionInLine() + 1); }
         ;
         
 assigment returns [Statment ast]:

@@ -56,7 +56,8 @@ public abstract class AstVisitorDefaultImpl<TP, TR> implements AstVisitor<TP, TR
 
 	@Override
 	public TR visit(Return returnStat, TP param) {
-		returnStat.getReturns().accept(this, param);
+		if (returnStat.getReturns() != null)
+			returnStat.getReturns().accept(this, param);
 		return null;
 	}
 
@@ -85,6 +86,16 @@ public abstract class AstVisitorDefaultImpl<TP, TR> implements AstVisitor<TP, TR
 		forStat.getCondition().accept(this, param);
 		forStat.getIncrement().accept(this, param);
 		forStat.getBody().forEach(stat -> stat.accept(this, param));
+		return null;
+	}
+
+	@Override
+	public TR visit(Break breakStat, TP param) {
+		return null;
+	}
+
+	@Override
+	public TR visit(Continue continueStat, TP param) {
 		return null;
 	}
 

@@ -7,10 +7,12 @@ import ast.Expresion;
 import ast.Statment;
 import semantic.AstVisitor;
 
-public class While extends ASTNodeImpl implements Statment {
+public class While extends ASTNodeImpl implements Statment, LoopStatment {
 
 	private Expresion condition;
 	private List<Statment> body;
+	
+	private int labelId;
 	
 	public While(Expresion condition, List<Statment> body) {
 		super();
@@ -24,6 +26,16 @@ public class While extends ASTNodeImpl implements Statment {
 
 	public List<Statment> getBody() {
 		return body;
+	}
+	
+	@Override
+	public void setLabelId(int id) {
+		this.labelId = id;
+	}
+
+	@Override
+	public int getLabelId() {
+		return labelId;
 	}
 	
 	@Override

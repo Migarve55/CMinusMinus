@@ -7,13 +7,14 @@ import ast.Expresion;
 import ast.Statment;
 import semantic.AstVisitor;
 
-public class For extends ASTNodeImpl implements Statment {
+public class For extends ASTNodeImpl implements Statment, LoopStatment {
 
 	private Statment vars;
 	private Expresion condition;
 	private Statment increment;
 
 	private List<Statment> body;
+	private int labelId;
 
 	public For(Statment vars, Expresion condition, Statment increment, List<Statment> body) {
 		super();
@@ -37,6 +38,16 @@ public class For extends ASTNodeImpl implements Statment {
 
 	public List<Statment> getBody() {
 		return body;
+	}
+	
+	@Override
+	public void setLabelId(int id) {
+		this.labelId = id;
+	}
+
+	@Override
+	public int getLabelId() {
+		return labelId;
 	}
 
 	@Override

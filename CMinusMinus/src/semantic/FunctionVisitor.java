@@ -31,7 +31,7 @@ public class FunctionVisitor extends AstVisitorDefaultImpl<Boolean, Boolean> {
 
 	@Override
 	public Boolean visit(Return returnStat, Boolean param) {
-		Type returns = returnStat.getReturns().getType();
+		Type returns = returnStat.getReturns() != null ? returnStat.getReturns().getType() : new VoidType();
 		Type shouldReturn = ((FunctionType) returnStat.getFunction().getType()).getReturnType();
 		if (!returns.getClass().equals(shouldReturn.getClass())) {
 			new ErrorType(returnStat, String.format("it should return an %s, not a %s", returns, shouldReturn));

@@ -9,6 +9,7 @@ import ast.definitions.VariableDefinition;
 import ast.expresions.Call;
 import ast.expresions.Ident;
 import ast.expresions.StructAccess;
+import ast.statements.For;
 import ast.statements.If;
 import ast.statements.Invocation;
 import ast.statements.Return;
@@ -69,8 +70,16 @@ public class IdentificationVisitor extends AstVisitorDefaultImpl<Definition, Def
 		return null;
 	}
 	
-	//Asignar
+	@Override
+	public Definition visit(For forStat, Definition param) {
+		symbolTable.set();
+		super.visit(forStat, param);
+		symbolTable.reset();
+		return null;
+	}
 	
+	//Asignar
+
 	@Override
 	public Definition visit(Ident ident, Definition param) {
 		Definition definition = symbolTable.getDefinition(ident.getName());

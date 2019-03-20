@@ -35,6 +35,10 @@ public interface AstVisitor<TP,TR> {
 	public TR visit(Write write, TP param);
 	
 	public TR visit(For forStat, TP param);
+	
+	public TR visit(Break breakStat, TP param);
+
+	public TR visit(Continue continueStat, TP param);
 
 	//Expressions
 	
