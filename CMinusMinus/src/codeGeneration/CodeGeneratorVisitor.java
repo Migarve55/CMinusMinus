@@ -73,7 +73,8 @@ public class CodeGeneratorVisitor extends AstVisitorDefaultImpl<Boolean, Boolean
 		for (VariableDeclaration p : type.getParameters())
 			out.printf("#param %s:%s%n", p.getName(), p.getType());
 		funcDef.getBody().forEach(stat -> stat.accept(this, param));
-		printInstruction("ret %d,%d,%d", type.getReturnSize(), localVarsSize, type.getParametersSize());
+		if (funcDef.needsReturn())
+			printInstruction("ret %d,%d,%d", type.getReturnSize(), localVarsSize, type.getParametersSize());
 		return null;
 	}
 
@@ -147,7 +148,8 @@ public class CodeGeneratorVisitor extends AstVisitorDefaultImpl<Boolean, Boolean
 	public Boolean visit(Return returnStat, Boolean param) {
 		printLine(returnStat);
 		super.visit(returnStat, true);
-		//out.printf("push%s %s%n" , returnStat.getReturns().getType().getMAPLSuffix(), returnStat.getReturns().getType().getSize());
+		FunctionType type = (FunctionType) returnStat.getFunction().getType();
+		printInstruction("ret %d,%d,%d", type.getReturnSize(), type.getLocalVarsSize(), type.getParametersSize());
 		return null;
 	}
 

@@ -17,10 +17,7 @@ import ast.statements.For;
 import ast.statements.If;
 import ast.statements.Invocation;
 import ast.statements.Read;
-import ast.statements.Return;
 import ast.statements.While;
-import ast.types.ErrorType;
-import ast.types.FunctionType;
 
 public class TypeVisitor extends AstVisitorDefaultImpl<Void, Void> {
 	
@@ -96,16 +93,6 @@ public class TypeVisitor extends AstVisitorDefaultImpl<Void, Void> {
 		Expresion left = assignment.getLeft();
 		Expresion right = assignment.getRight();
 		left.getType().assing(right.getType());
-		return null;
-	}
-
-	@Override
-	public Void visit(Return returnStat, Void param) {
-		super.visit(returnStat, param);
-		Type returns = returnStat.getReturns().getType();
-		Type shouldReturn = ((FunctionType) returnStat.getFunction().getType()).getReturnType();
-		if (!returns.getClass().equals(shouldReturn.getClass()))
-			new ErrorType(returnStat, String.format("it should return an %s, not a %s", returns, shouldReturn));
 		return null;
 	}
 

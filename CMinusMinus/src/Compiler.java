@@ -15,6 +15,7 @@ import parser.CmmParser.ProgramContext;
 import semantic.AddressableVisitor;
 import semantic.AstVisitor;
 import semantic.ErrorHandler;
+import semantic.FunctionVisitor;
 import semantic.IdentificationVisitor;
 import semantic.LValueVisitor;
 import semantic.TypeVisitor;
@@ -24,7 +25,7 @@ public class Compiler {
 	public static void main(String[] args) {
 		
 		//Change this to compile another program
-		String program = "passByReference";
+		String program = "functions";
 		
 		Compiler compiler = new Compiler();
 		try {
@@ -61,6 +62,8 @@ public class Compiler {
 		if (!visit(new IdentificationVisitor(), program.ast, null))
 			return;
 		if (!visit(new TypeVisitor(), program.ast, null))
+			return;
+		if (!visit(new FunctionVisitor(), program.ast, null))
 			return;
 
 		// Code generation

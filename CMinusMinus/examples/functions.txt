@@ -1,0 +1,27 @@
+
+void f1() {
+	return;
+}
+
+int f2() {
+	return 1;
+}
+
+// Wrong!!!
+int f3() {
+	if (0)
+		return 1;
+}
+
+// Okey
+int f4() {
+	if (0)
+		return 0;
+	return 1;
+}
+
+void main() {
+	
+	// Nothing to see here
+	
+}

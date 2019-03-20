@@ -91,6 +91,7 @@ statment returns [Statment ast]:
         | ifStat                              					{ $ast = $ifStat.ast; }
         | t='while' '(' expr ')' block        					{ $ast = new While($expr.ast, $block.ast); $ast.setLine($t.line); $ast.setColumn($t.getCharPositionInLine() + 1); }
         | t='return' expr ';'                 					{ $ast = new Return($expr.ast); $ast.setLine($t.line); $ast.setColumn($t.getCharPositionInLine() + 1); }
+        | t='return' ';'                                        { $ast = new Return(); $ast.setLine($t.line); $ast.setColumn($t.getCharPositionInLine() + 1); }
         | t='write' args ';'                 				 	{ $ast = new Write($args.ast); $ast.setLine($t.line); $ast.setColumn($t.getCharPositionInLine() + 1); }    
         | t='read' expr ';'                   					{ $ast = new Read($expr.ast); $ast.setLine($t.line); $ast.setColumn($t.getCharPositionInLine() + 1); }
         | ID t='(' args ')' ';'               					{ $ast = new Invocation($ID.text, $args.ast); $ast.setLine($t.line); $ast.setColumn($t.getCharPositionInLine() + 1); }

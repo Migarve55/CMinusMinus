@@ -12,6 +12,10 @@ public class Return extends ASTNodeImpl implements Statment {
 	
 	private FunctionDefinition function;
 	
+	public Return() {
+		super();
+	}
+	
 	public Return(Expresion returns) {
 		super();
 		this.returns = returns;
