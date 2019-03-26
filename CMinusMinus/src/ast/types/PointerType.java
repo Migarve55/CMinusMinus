@@ -66,5 +66,12 @@ public class PointerType extends AbstractType {
 	public String toString() {
 		return "address";
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (!this.getClass().equals(obj.getClass()))
+			return false;
+		return this.getPointerType().equals(((PointerType) obj).getPointerType());
+	}
 
 }

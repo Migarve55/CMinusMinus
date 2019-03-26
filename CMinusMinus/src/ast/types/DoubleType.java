@@ -44,14 +44,14 @@ public class DoubleType extends AbstractType {
 
 	@Override
 	public Type equivalent(Type type) {
-		if (this.getClass().equals(type.getClass()))
+		if (this.equals(type))
 			return new IntegerType();
 		return super.equivalent(type);
 	}
 	
 	@Override
 	public Type assing(Type type) {
-		if (this.getClass().equals(type.getClass()))
+		if (this.equals(type))
 			return null;
 		return super.assing(type);
 	}

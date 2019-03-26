@@ -5,6 +5,7 @@ import java.util.List;
 import ast.ASTNode;
 import ast.ASTNodeImpl;
 import ast.Type;
+import semantic.AstVisitor;
 
 public abstract class AbstractType extends ASTNodeImpl implements Type {
 	
@@ -97,6 +98,29 @@ public abstract class AbstractType extends ASTNodeImpl implements Type {
 	@Override
 	public Type asterisk() {
 		return new ErrorType(parent, this + " is not a pointer");
+	}
+
+	@Override
+	public <TP, TR> TR accept(AstVisitor<TP, TR> visitor, TP param) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getBytesSize() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public String getMAPLSuffix() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		return this.getClass().equals(obj.getClass());
 	}
 
 }

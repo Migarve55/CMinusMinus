@@ -31,7 +31,7 @@ public class CharType extends AbstractType {
 	
 	@Override
 	public Type assing(Type type) {
-		if (this.getClass().equals(type.getClass()))
+		if (this.equals(type))
 			return null;
 		return super.assing(type);
 	}
