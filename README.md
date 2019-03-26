@@ -11,10 +11,10 @@ The goal is to understang how compilers work. This is only a educational languag
   - Basic and composite types (arrays and structs)
   - Pointers manipulation
 
-## Goals
+## Goals (by priority)
 
   - lambdas
-  - automatic type promotion
+  - declaration with value intitialization (e.g. "int n = 1;")
   - Implement more operators ("++", "--")
   - Implement assigment operators ("+=", "-=", ...etc)
 
@@ -33,7 +33,7 @@ Same as in any C code
 
  - If/Else
  - While
- - For: like the old versions of C, you can not
+ - For: like the old versions of C, you can not declare the iterated variable inside the for, it has to be outside.
 
 ## Basic types
 
@@ -48,6 +48,7 @@ Same as in any C code
 
   - array
   - struct
+  - pointers (they do not work with structs)
 
 ## Operators
 
@@ -75,4 +76,3 @@ In the folder "examples" you will see:
   - primesGenerator: as the name indicates, it generates primes until a max number inputed by the user.
   - loops: shows you loops and basic control flow keywords.
   - typeInference: Shows you how the types are promoted.
-
