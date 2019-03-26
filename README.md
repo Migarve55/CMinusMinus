@@ -51,12 +51,14 @@ Same as in any C code
 
 ## Operators
 
-This is important: there is no type promotion in this language, so be careful with casting.
-This will be fixed in the near future.
+The basic ones:
+
+  - Arithmetic (+,-,*,/)
+  - Boolean (&&,||,!)
 
 ## Functions
 
-They work as intended
+They work as intended.
 
 ## Target language and Enviroment
 
@@ -72,5 +74,5 @@ In the folder "examples" you will see:
   - passByReference: passing arguments to a function example.
   - primesGenerator: as the name indicates, it generates primes until a max number inputed by the user.
   - loops: shows you loops and basic control flow keywords.
-
+  - typeInference: Shows you how the types are promoted.
 
