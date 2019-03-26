@@ -13,10 +13,10 @@ The goal is to understang how compilers work. This is only a educational languag
 
 ## Goals
 
+  - lambdas
+  - automatic type promotion
   - Implement more operators ("++", "--")
   - Implement assigment operators ("+=", "-=", ...etc)
-  - Implement aditional control structures ("break" and "continue") for loops
-  - Multiple returns for functions
 
 ## Disclaimer
 
@@ -52,13 +52,11 @@ Same as in any C code
 ## Operators
 
 This is important: there is no type promotion in this language, so be careful with casting.
+This will be fixed in the near future.
 
 ## Functions
 
-Functions are a bit tricky, specially when it comes to returning types.
-In this point, you can only return at the end of the funcition, and the compiler does not check that you always 
-return a value. This can cause the VM to break, so be careful.
-I am planning to make this better in the future.
+They work as intended
 
 ## Target language and Enviroment
 
@@ -69,9 +67,10 @@ I am planning on translating on another intermidiate machine code, but this is a
 
 In the folder "examples" you will see:
 
-  - helloWorld: obligatory example
-  - pointers: shows you how to use pointers
-  - passByReference: passing arguments to a function example
+  - helloWorld: obligatory example.
+  - pointers: shows you how to use pointers.
+  - passByReference: passing arguments to a function example.
   - primesGenerator: as the name indicates, it generates primes until a max number inputed by the user.
+  - loops: shows you loops and basic control flow keywords.
 
 
