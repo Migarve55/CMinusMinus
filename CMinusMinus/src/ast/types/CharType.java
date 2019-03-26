@@ -44,6 +44,13 @@ public class CharType extends AbstractType {
 	}
 	
 	@Override
+	public Type arithmetic(Type type) {
+		if (type instanceof CharType)
+			return new IntegerType();
+		return super.arithmetic(type);
+	}
+
+	@Override
 	public Type address() {
 		return new PointerType(this);
 	}

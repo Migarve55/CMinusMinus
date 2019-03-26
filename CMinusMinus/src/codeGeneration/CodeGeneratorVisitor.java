@@ -209,8 +209,7 @@ public class CodeGeneratorVisitor extends AstVisitorDefaultImpl<Boolean, Boolean
 		return null;
 	}
 	
-	//Expresions
-
+	//Expressions
 
 	@Override
 	public Boolean visit(ArrayAccess arrayAccess, Boolean loadValue) {
@@ -226,7 +225,14 @@ public class CodeGeneratorVisitor extends AstVisitorDefaultImpl<Boolean, Boolean
 
 	@Override
 	public Boolean visit(BinaryOperator op, Boolean param) {
-		super.visit(op, param);
+		op.getLeft().accept(this, param);
+		if (!op.getLeft().getType().equals(op.getType())) {
+			printInstruction("%s2%s", op.getLeft().getType().getMAPLSuffix(), op.getType().getMAPLSuffix());
+		}
+		op.getRight().accept(this, param);
+		if (!op.getRight().getType().equals(op.getType())) {
+			printInstruction("%s2%s", op.getRight().getType().getMAPLSuffix(), op.getType().getMAPLSuffix());
+		}
 		printInstruction(operatorsUtil.getMAPLInstruction(op.getOperator(), op.getType()));
 		return null;
 	}
