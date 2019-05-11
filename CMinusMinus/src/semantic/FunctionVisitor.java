@@ -33,7 +33,7 @@ public class FunctionVisitor extends AstVisitorDefaultImpl<Boolean, Boolean> {
 	public Boolean visit(Return returnStat, Boolean param) {
 		Type returns = returnStat.getReturns() != null ? returnStat.getReturns().getType() : new VoidType();
 		Type shouldReturn = ((FunctionType) returnStat.getFunction().getType()).getReturnType();
-		if (!returns.getClass().equals(shouldReturn.getClass())) {
+		if (!returns.equals(shouldReturn)) {
 			new ErrorType(returnStat, String.format("it should return an %s, not a %s", returns, shouldReturn));
 			return false;
 		}
@@ -89,7 +89,5 @@ public class FunctionVisitor extends AstVisitorDefaultImpl<Boolean, Boolean> {
 		super.visit(write, param);
 		return false;
 	}
-	
-	
 	
 }

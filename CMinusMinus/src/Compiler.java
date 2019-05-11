@@ -26,7 +26,7 @@ public class Compiler {
 	public static void main(String[] args) {
 		
 		//Change this to compile another program
-		String program = "loops";
+		String program = "typeInference";
 		
 		Compiler compiler = new Compiler();
 		try {

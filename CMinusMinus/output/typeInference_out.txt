@@ -1,0 +1,71 @@
+#source "examples/typeInference.txt"
+
+	call main
+	halt
+
+#line 2
+	
+main:
+#func main
+	enter 8
+#ret void
+#local real:real
+
+#line 5
+	pushi -4
+	pusha bp
+	add
+	pushi 3
+	i2f
+	pushf 2,50
+	mulf
+	storef
+
+#line 6
+	pushi -4
+	pusha bp
+	add
+	loadf
+	outf
+#local c1:char
+#local c2:char
+
+#line 9
+	pushi -5
+	pusha bp
+	add
+	pushb 97
+	storeb
+
+#line 10
+	pushi -6
+	pusha bp
+	add
+	pushb 98
+	storeb
+#local n:int
+
+#line 12
+	pushi -8
+	pusha bp
+	add
+	pushi -5
+	pusha bp
+	add
+	loadb
+	b2i
+	pushi -6
+	pusha bp
+	add
+	loadb
+	b2i
+	addi
+	storei
+
+#line 13
+	pushi -8
+	pusha bp
+	add
+	loadi
+	outi
+	ret 0,8,0

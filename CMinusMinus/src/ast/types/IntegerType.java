@@ -50,14 +50,14 @@ public class IntegerType extends AbstractType {
 
 	@Override
 	public Type equivalent(Type type) {
-		if (this.getClass().equals(type.getClass()))
+		if (this.equals(type))
 			return this;
 		return super.equivalent(type);
 	}
 	
 	@Override
 	public Type assing(Type type) {
-		if (this.getClass().equals(type.getClass()))
+		if (this.equals(type))
 			return null;
 		return super.assing(type);
 	}

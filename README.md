@@ -11,11 +11,17 @@ The goal is to understang how compilers work. This is only a educational languag
   - Basic and composite types (arrays and structs)
   - Pointers manipulation
 
-## Goals
+## Goals (by priority)
 
+  - lambdas
+  - declaration with value intitialization (e.g. "int n = 1;")
   - Implement more operators ("++", "--")
   - Implement assigment operators ("+=", "-=", ...etc)
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> branch 'master' of https://github.com/Migarve55/CMinusMinus.git
 ## Disclaimer
 
   This project is based in a project from DLP (Programming Languages Design (The acronym is in Spanish)).
@@ -31,7 +37,11 @@ Same as in any C code
 
  - If/Else
  - While
+<<<<<<< HEAD
  - For: like the old versions of C, you can not declare the variables inside, only initialize them.
+=======
+ - For: like the old versions of C, you can not declare the iterated variable inside the for, it has to be outside.
+>>>>>>> branch 'master' of https://github.com/Migarve55/CMinusMinus.git
 
 ## Basic types
 
@@ -49,20 +59,24 @@ Same as in any C code, except there are no strings.
 
   - array
   - struct
+<<<<<<< HEAD
   
   Warning: there is not way to declare a pointer to a struct to this day. 
   Due to langauge constrains, I am looking for a way to fix this, but it is not easy.
+=======
+  - pointers (they do not work with structs)
+>>>>>>> branch 'master' of https://github.com/Migarve55/CMinusMinus.git
 
 ## Operators
 
-This is important: there is no type promotion in this language, so be careful with casting.
+The basic ones:
+
+  - Arithmetic (+,-,*,/)
+  - Boolean (&&,||,!)
 
 ## Functions
 
-Functions are a bit tricky, specially when it comes to returning types.
-In this point, you can only return at the end of the funcition, and the compiler does not check that you always 
-return a value. This can cause the VM to break, so be careful.
-I am planning to make this better in the future.
+They work as intended.
 
 ## I/O Operations
 
@@ -84,9 +98,14 @@ I am planning on translating on another intermidiate machine code, but this is a
 
 In the folder "examples" you will see:
 
-  - helloWorld: obligatory example
-  - pointers: shows you how to use pointers
-  - passByReference: passing arguments to a function example
+  - helloWorld: obligatory example.
+  - pointers: shows you how to use pointers.
+  - passByReference: passing arguments to a function example.
   - primesGenerator: as the name indicates, it generates primes until a max number inputed by the user.
+<<<<<<< HEAD
   - loops: basic loop manipulation
 
+=======
+  - loops: shows you loops and basic control flow keywords.
+  - typeInference: Shows you how the types are promoted.
+>>>>>>> branch 'master' of https://github.com/Migarve55/CMinusMinus.git

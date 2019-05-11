@@ -31,7 +31,7 @@ public class CharType extends AbstractType {
 	
 	@Override
 	public Type assing(Type type) {
-		if (this.getClass().equals(type.getClass()))
+		if (this.equals(type))
 			return null;
 		return super.assing(type);
 	}
@@ -43,6 +43,13 @@ public class CharType extends AbstractType {
 		return super.cast(type);
 	}
 	
+	@Override
+	public Type arithmetic(Type type) {
+		if (type instanceof CharType)
+			return new IntegerType();
+		return super.arithmetic(type);
+	}
+
 	@Override
 	public Type address() {
 		return new PointerType(this);
