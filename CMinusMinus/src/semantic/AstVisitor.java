@@ -20,6 +20,8 @@ public interface AstVisitor<TP,TR> {
 	
 	public TR visit(Assignment assignment, TP param);
 	
+	public TR visit(OperationAssignment assignment, TP param);
+	
 	public TR visit(If ifStat, TP param);
 	
 	public TR visit(Invocation invocation, TP param);

@@ -7,7 +7,7 @@ The goal is to understang how compilers work. This is only a educational languag
 
 ## Features
 
-  - Basic control structures
+  - Basic control structures, plus "break" and "continue" keywords
   - Basic and composite types (arrays and structs)
   - Pointers manipulation
 
@@ -15,9 +15,7 @@ The goal is to understang how compilers work. This is only a educational languag
 
   - Implement more operators ("++", "--")
   - Implement assigment operators ("+=", "-=", ...etc)
-  - Implement aditional control structures ("break" and "continue") for loops
-  - Multiple returns for functions
-
+  
 ## Disclaimer
 
   This project is based in a project from DLP (Programming Languages Design (The acronym is in Spanish)).
@@ -33,7 +31,7 @@ Same as in any C code
 
  - If/Else
  - While
- - For: like the old versions of C, you can not
+ - For: like the old versions of C, you can not declare the variables inside, only initialize them.
 
 ## Basic types
 
@@ -41,13 +39,19 @@ Same as in any C code
   - int:    2 bytes
   - double: 4 bytes
   - pointer: 2 bytes
+  
+  There are no booleans, instead you should use the integer. 
+  One is used as 'true' and zero as 'false'.
 
 ## Composite types
 
-Same as in any C code
+Same as in any C code, except there are no strings.
 
   - array
   - struct
+  
+  Warning: there is not way to declare a pointer to a struct to this day. 
+  Due to langauge constrains, I am looking for a way to fix this, but it is not easy.
 
 ## Operators
 
@@ -59,6 +63,17 @@ Functions are a bit tricky, specially when it comes to returning types.
 In this point, you can only return at the end of the funcition, and the compiler does not check that you always 
 return a value. This can cause the VM to break, so be careful.
 I am planning to make this better in the future.
+
+## I/O Operations
+
+For inputing:
+	
+	- read expr;
+	
+For outputing:
+
+	- write expr;
+	- write expr, expr, ... , expr; 
 
 ## Target language and Enviroment
 
@@ -73,5 +88,5 @@ In the folder "examples" you will see:
   - pointers: shows you how to use pointers
   - passByReference: passing arguments to a function example
   - primesGenerator: as the name indicates, it generates primes until a max number inputed by the user.
-
+  - loops: basic loop manipulation
 

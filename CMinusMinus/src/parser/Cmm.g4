@@ -101,7 +101,8 @@ statment returns [Statment ast]:
         ;
         
 assigment returns [Statment ast]:
-		e1=expr t='=' e2=expr  { $ast = new Assignment($e1.ast, $e2.ast); $ast.setLine($t.line); $ast.setColumn($t.getCharPositionInLine() + 1); }
+		  e1=expr t='=' e2=expr                    { $ast = new Assignment($e1.ast, $e2.ast); $ast.setLine($t.line); $ast.setColumn($t.getCharPositionInLine() + 1); }
+		| e1=expr t=('+='|'-='|'*='|'/=') e2=expr  { $ast = new OperationAssignment($e1.ast, $t.text, $e2.ast); $ast.setLine($t.line); $ast.setColumn($t.getCharPositionInLine() + 1); }
 		;
 
 ifStat returns [If ast]: 

@@ -11,6 +11,7 @@ import ast.expresions.IntLiteral;
 import ast.expresions.StructAccess;
 import ast.expresions.UnaryOperator;
 import ast.statements.Assignment;
+import ast.statements.OperationAssignment;
 import ast.statements.Read;
 import ast.types.ErrorType;
 
@@ -22,6 +23,18 @@ public class LValueVisitor extends AstVisitorDefaultImpl<Void, Void> {
 
 	@Override
 	public Void visit(Assignment assignment, Void param) {
+		super.visit(assignment, param);
+		if (!assignment.getLeft().getLValue()) {
+			new ErrorType(assignment, 
+				String.format("Can not assign '%s' to '%s'", 
+					assignment.getRight(), 
+					assignment.getLeft()));
+		}
+		return null;
+	}
+	
+	@Override
+	public Void visit(OperationAssignment assignment, Void param) {
 		super.visit(assignment, param);
 		if (!assignment.getLeft().getLValue()) {
 			new ErrorType(assignment, 

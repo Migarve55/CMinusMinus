@@ -25,6 +25,7 @@ import ast.statements.Continue;
 import ast.statements.For;
 import ast.statements.If;
 import ast.statements.Invocation;
+import ast.statements.OperationAssignment;
 import ast.statements.Read;
 import ast.statements.Return;
 import ast.statements.VariableDeclaration;
@@ -101,6 +102,17 @@ public class CodeGeneratorVisitor extends AstVisitorDefaultImpl<Boolean, Boolean
 		printLine(assignment);
 		assignment.getLeft().accept(this, false);
 		assignment.getRight().accept(this, true);
+		printInstruction("store%s", assignment.getRight().getType().getMAPLSuffix());
+		return null;
+	}
+	
+	@Override
+	public Boolean visit(OperationAssignment assignment, Boolean param) {
+		printLine(assignment);
+		assignment.getLeft().accept(this, false);
+		assignment.getLeft().accept(this, true);
+		assignment.getRight().accept(this, true);
+		printInstruction(operatorsUtil.getMAPLInstruction(assignment.getOp(), assignment.getLeft().getType()));
 		printInstruction("store%s", assignment.getRight().getType().getMAPLSuffix());
 		return null;
 	}
@@ -210,7 +222,6 @@ public class CodeGeneratorVisitor extends AstVisitorDefaultImpl<Boolean, Boolean
 	}
 	
 	//Expresions
-
 
 	@Override
 	public Boolean visit(ArrayAccess arrayAccess, Boolean loadValue) {

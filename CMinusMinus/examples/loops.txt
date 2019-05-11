@@ -3,7 +3,7 @@ void main() {
 
 	int i;
 	// Should only print '50'
-	for(i=0;i < 100;i = i + 1) {
+	for(i=0;i < 100;i += 1) {
 		if (i < 50)
 			continue;
 		write i, '\n';

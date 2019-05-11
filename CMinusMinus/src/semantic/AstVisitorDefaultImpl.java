@@ -33,6 +33,13 @@ public abstract class AstVisitorDefaultImpl<TP, TR> implements AstVisitor<TP, TR
 		assignment.getRight().accept(this, param);
 		return null;
 	}
+	
+	@Override
+	public TR visit(OperationAssignment assignment, TP param) {
+		assignment.getLeft().accept(this, param);
+		assignment.getRight().accept(this, param);
+		return null;
+	}
 
 	@Override
 	public TR visit(If ifStat, TP param) {

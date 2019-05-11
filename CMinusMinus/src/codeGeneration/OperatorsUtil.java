@@ -26,6 +26,10 @@ public class OperatorsUtil {
 		binaryTypedOperators.put("-", "sub");
 		binaryTypedOperators.put("*", "mul");
 		binaryTypedOperators.put("/", "div");
+		binaryTypedOperators.put("+=", "add");
+		binaryTypedOperators.put("-=", "sub");
+		binaryTypedOperators.put("*=", "mul");
+		binaryTypedOperators.put("/=", "div");
 		unaryOperators.put("!", "not");
 		unaryOperators.put("-", "not");
 		unaryOperators.put("*", "load%s");
