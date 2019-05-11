@@ -16,6 +16,7 @@ import ast.statements.Assignment;
 import ast.statements.For;
 import ast.statements.If;
 import ast.statements.Invocation;
+import ast.statements.OperationAssignment;
 import ast.statements.Read;
 import ast.statements.While;
 
@@ -89,6 +90,15 @@ public class TypeVisitor extends AstVisitorDefaultImpl<Void, Void> {
 
 	@Override
 	public Void visit(Assignment assignment, Void param) {
+		super.visit(assignment, param);
+		Expresion left = assignment.getLeft();
+		Expresion right = assignment.getRight();
+		left.getType().assing(right.getType());
+		return null;
+	}
+	
+	@Override
+	public Void visit(OperationAssignment assignment, Void param) {
 		super.visit(assignment, param);
 		Expresion left = assignment.getLeft();
 		Expresion right = assignment.getRight();
