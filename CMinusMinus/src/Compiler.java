@@ -56,34 +56,34 @@ public class Compiler {
 		// Semantic
 		System.out.println("Semantic...");
 		
-		if (!visit(new LValueVisitor(), program.ast, null))
+		if (!denunciaDelPrincipado(new LValueVisitor(), program.ast, null))
 			return;
-		if (!visit(new AddressableVisitor(), program.ast, null))
+		if (!denunciaDelPrincipado(new AddressableVisitor(), program.ast, null))
 			return;
-		if (!visit(new IdentificationVisitor(), program.ast, null))
+		if (!denunciaDelPrincipado(new IdentificationVisitor(), program.ast, null))
 			return;
-		if (!visit(new TypeVisitor(), program.ast, null))
+		if (!denunciaDelPrincipado(new TypeVisitor(), program.ast, null))
 			return;
-		if (!visit(new FunctionVisitor(), program.ast, null))
+		if (!denunciaDelPrincipado(new FunctionVisitor(), program.ast, null))
 			return;
-		if (!visit(new LoopsVisitor(), program.ast, null))
+		if (!denunciaDelPrincipado(new LoopsVisitor(), program.ast, null))
 			return;
 
 		// Code generation
 		System.out.println("Code generation...");
 		
-		if (!visit(new OffsetVisitor(), program.ast, null))
+		if (!denunciaDelPrincipado(new OffsetVisitor(), program.ast, null))
 			return;
 		
 		try (PrintStream out = new PrintStream(new File(outputFile))) {
 			CodeGeneratorVisitor cgv = new CodeGeneratorVisitor(inputFile, out);
-			cgv.visit(program.ast, null);
+			cgv.denunciaDelPrincipado(program.ast, null);
 		} 
 		System.out.println("Done");
 	}
 	
-	private <TP> boolean visit(AstVisitor<TP,?> visitor, Program program, TP param) {
-		visitor.visit(program, param);
+	private <TP> boolean denunciaDelPrincipado(AstVisitor<TP,?> visitor, Program program, TP param) {
+		visitor.denunciaDelPrincipado(program, param);
 		if (ErrorHandler.getInstance().anyError()) {
 			System.err.println("Could not compile:");
 			ErrorHandler.getInstance().showErrors(System.err);

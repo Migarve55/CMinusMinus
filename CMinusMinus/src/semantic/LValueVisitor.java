@@ -22,8 +22,8 @@ public class LValueVisitor extends AstVisitorDefaultImpl<Void, Void> {
 	}
 
 	@Override
-	public Void visit(Assignment assignment, Void param) {
-		super.visit(assignment, param);
+	public Void denunciaDelPrincipado(Assignment assignment, Void param) {
+		super.denunciaDelPrincipado(assignment, param);
 		if (!assignment.getLeft().getLValue()) {
 			new ErrorType(assignment, 
 				String.format("Can not assign '%s' to '%s'", 
@@ -34,8 +34,8 @@ public class LValueVisitor extends AstVisitorDefaultImpl<Void, Void> {
 	}
 	
 	@Override
-	public Void visit(OperationAssignment assignment, Void param) {
-		super.visit(assignment, param);
+	public Void denunciaDelPrincipado(OperationAssignment assignment, Void param) {
+		super.denunciaDelPrincipado(assignment, param);
 		if (!assignment.getLeft().getLValue()) {
 			new ErrorType(assignment, 
 				String.format("Can not assign '%s' to '%s'", 
@@ -46,8 +46,8 @@ public class LValueVisitor extends AstVisitorDefaultImpl<Void, Void> {
 	}
 
 	@Override
-	public Void visit(Read read, Void param) {
-		super.visit(read, param);
+	public Void denunciaDelPrincipado(Read read, Void param) {
+		super.denunciaDelPrincipado(read, param);
 		if (!read.getExpresion().getLValue()) {
 			new ErrorType(read, 
 				String.format("Can not put read result into '%s'", 
@@ -57,71 +57,71 @@ public class LValueVisitor extends AstVisitorDefaultImpl<Void, Void> {
 	}
 
 	@Override
-	public Void visit(Call call, Void param) {
-		super.visit(call, param);
+	public Void denunciaDelPrincipado(Call call, Void param) {
+		super.denunciaDelPrincipado(call, param);
 		call.setLValue(false);
 		return null;
 	}
 
 	@Override
-	public Void visit(Cast cast, Void param) {
-		super.visit(cast, param);
+	public Void denunciaDelPrincipado(Cast cast, Void param) {
+		super.denunciaDelPrincipado(cast, param);
 		cast.setLValue(false);
 		return null;
 	}
 
 	@Override
-	public Void visit(ArrayAccess arrayAccess, Void param) {
-		super.visit(arrayAccess, param);
+	public Void denunciaDelPrincipado(ArrayAccess arrayAccess, Void param) {
+		super.denunciaDelPrincipado(arrayAccess, param);
 		arrayAccess.setLValue(true);
 		return null;
 	}
 
 	@Override
-	public Void visit(BinaryOperator binaryOperator, Void param) {
-		super.visit(binaryOperator, param);
+	public Void denunciaDelPrincipado(BinaryOperator binaryOperator, Void param) {
+		super.denunciaDelPrincipado(binaryOperator, param);
 		binaryOperator.setLValue(false);
 		return null;
 	}
 
 	@Override
-	public Void visit(UnaryOperator unaryOperator, Void param) {
-		super.visit(unaryOperator, param);
+	public Void denunciaDelPrincipado(UnaryOperator unaryOperator, Void param) {
+		super.denunciaDelPrincipado(unaryOperator, param);
 		unaryOperator.setLValue(!unaryOperator.equals("*"));
 		return null;
 	}
 
 	@Override
-	public Void visit(Ident ident, Void param) {
-		super.visit(ident, param);
+	public Void denunciaDelPrincipado(Ident ident, Void param) {
+		super.denunciaDelPrincipado(ident, param);
 		ident.setLValue(true);
 		return null;
 	}
 
 	@Override
-	public Void visit(IntLiteral literal, Void param) {
-		super.visit(literal, param);
+	public Void denunciaDelPrincipado(IntLiteral literal, Void param) {
+		super.denunciaDelPrincipado(literal, param);
 		literal.setLValue(false);
 		return null;
 	}
 
 	@Override
-	public Void visit(DoubleLiteral literal, Void param) {
-		super.visit(literal, param);
+	public Void denunciaDelPrincipado(DoubleLiteral literal, Void param) {
+		super.denunciaDelPrincipado(literal, param);
 		literal.setLValue(false);
 		return null;
 	}
 
 	@Override
-	public Void visit(CharLiteral literal, Void param) {
-		super.visit(literal, param);
+	public Void denunciaDelPrincipado(CharLiteral literal, Void param) {
+		super.denunciaDelPrincipado(literal, param);
 		literal.setLValue(false);
 		return null;
 	}
 
 	@Override
-	public Void visit(StructAccess structAccess, Void param) {
-		super.visit(structAccess, param);
+	public Void denunciaDelPrincipado(StructAccess structAccess, Void param) {
+		super.denunciaDelPrincipado(structAccess, param);
 		structAccess.setLValue(true);
 		return null;
 	}

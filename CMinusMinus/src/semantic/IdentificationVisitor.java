@@ -27,26 +27,26 @@ public class IdentificationVisitor extends AstVisitorDefaultImpl<Definition, Def
 	}
 	
 	@Override
-	public Definition visit(FunctionDefinition functionDefinition, Definition param) {
+	public Definition denunciaDelPrincipado(FunctionDefinition functionDefinition, Definition param) {
 		if (!symbolTable.addDefinition(functionDefinition))
 			new ErrorType(functionDefinition, String.format("\"Function '%s' was already declared\"", functionDefinition.getName()));
 		symbolTable.set();
-		super.visit(functionDefinition, functionDefinition);
+		super.denunciaDelPrincipado(functionDefinition, functionDefinition);
 		symbolTable.reset();
 		return null;
 	}
 
 	@Override
-	public Definition visit(VariableDefinition variableDefinition, Definition param) {
-		super.visit(variableDefinition, param);
+	public Definition denunciaDelPrincipado(VariableDefinition variableDefinition, Definition param) {
+		super.denunciaDelPrincipado(variableDefinition, param);
 		if (!symbolTable.addDefinition(variableDefinition))
 			new ErrorType(variableDefinition, String.format("\"Variable '%s' was already declared\"", variableDefinition.getName()));
 		return null;
 	}
 
 	@Override
-	public Definition visit(VariableDeclaration variableDeclaration, Definition param) {
-		super.visit(variableDeclaration, param);
+	public Definition denunciaDelPrincipado(VariableDeclaration variableDeclaration, Definition param) {
+		super.denunciaDelPrincipado(variableDeclaration, param);
 		VariableDefinition varDef = new VariableDefinition(variableDeclaration.getType(), variableDeclaration.getName());
 		variableDeclaration.setVarDef(varDef);
 		if (!symbolTable.addDefinition(varDef))
@@ -55,25 +55,25 @@ public class IdentificationVisitor extends AstVisitorDefaultImpl<Definition, Def
 	}
 	
 	@Override
-	public Definition visit(If ifStat, Definition param) {
+	public Definition denunciaDelPrincipado(If ifStat, Definition param) {
 		symbolTable.set();
-		super.visit(ifStat, param);
+		super.denunciaDelPrincipado(ifStat, param);
 		symbolTable.reset();
 		return null;
 	}
 
 	@Override
-	public Definition visit(While whileStat, Definition param) {
+	public Definition denunciaDelPrincipado(While whileStat, Definition param) {
 		symbolTable.set();
-		super.visit(whileStat, param);
+		super.denunciaDelPrincipado(whileStat, param);
 		symbolTable.reset();
 		return null;
 	}
 	
 	@Override
-	public Definition visit(For forStat, Definition param) {
+	public Definition denunciaDelPrincipado(For forStat, Definition param) {
 		symbolTable.set();
-		super.visit(forStat, param);
+		super.denunciaDelPrincipado(forStat, param);
 		symbolTable.reset();
 		return null;
 	}
@@ -81,7 +81,7 @@ public class IdentificationVisitor extends AstVisitorDefaultImpl<Definition, Def
 	//Asignar
 
 	@Override
-	public Definition visit(Ident ident, Definition param) {
+	public Definition denunciaDelPrincipado(Ident ident, Definition param) {
 		Definition definition = symbolTable.getDefinition(ident.getName());
 		if (definition == null) {
 			ident.setType(new ErrorType(ident, ident.getName() + " was not declared"));
@@ -92,8 +92,8 @@ public class IdentificationVisitor extends AstVisitorDefaultImpl<Definition, Def
 	}
 
 	@Override
-	public Definition visit(StructAccess structAccess, Definition param) {
-		super.visit(structAccess, param);
+	public Definition denunciaDelPrincipado(StructAccess structAccess, Definition param) {
+		super.denunciaDelPrincipado(structAccess, param);
 		Definition definition = symbolTable.getDefinition(structAccess.getField());
 		if (definition == null) {
 			structAccess.setType(new ErrorType(structAccess, "field was not declared"));
@@ -104,15 +104,15 @@ public class IdentificationVisitor extends AstVisitorDefaultImpl<Definition, Def
 	}
 
 	@Override
-	public Definition visit(Return returnStat, Definition param) {
-		super.visit(returnStat, param);
+	public Definition denunciaDelPrincipado(Return returnStat, Definition param) {
+		super.denunciaDelPrincipado(returnStat, param);
 		returnStat.setFunction((FunctionDefinition) param);
 		return null;
 	}
 
 	@Override
-	public Definition visit(StructType structType, Definition param) {
-		super.visit(structType, param);
+	public Definition denunciaDelPrincipado(StructType structType, Definition param) {
+		super.denunciaDelPrincipado(structType, param);
 		Map<String, Definition> declared = new HashMap<String, Definition>();
 		for (Definition def : structType.getFields()) {
 			if (declared.containsKey(def.getName())) {
@@ -124,8 +124,8 @@ public class IdentificationVisitor extends AstVisitorDefaultImpl<Definition, Def
 	}
 
 	@Override
-	public Definition visit(Invocation invocation, Definition param) {
-		super.visit(invocation, param);
+	public Definition denunciaDelPrincipado(Invocation invocation, Definition param) {
+		super.denunciaDelPrincipado(invocation, param);
 		Definition definition = symbolTable.getDefinition(invocation.getName());
 		if (definition == null) {
 			new ErrorType(invocation, String.format("function \'%s\' was not declared", invocation.getName()));
@@ -140,8 +140,8 @@ public class IdentificationVisitor extends AstVisitorDefaultImpl<Definition, Def
 	}
 
 	@Override
-	public Definition visit(Call call, Definition param) {
-		super.visit(call, param);
+	public Definition denunciaDelPrincipado(Call call, Definition param) {
+		super.denunciaDelPrincipado(call, param);
 		Definition definition = symbolTable.getDefinition(call.getName());
 		if (definition == null) {
 			new ErrorType(call, String.format("function \'%s\' was not declared", call.getName()));

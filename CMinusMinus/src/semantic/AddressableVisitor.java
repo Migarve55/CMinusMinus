@@ -20,8 +20,8 @@ public class AddressableVisitor extends AstVisitorDefaultImpl<Void, Void> {
 	}
 	
 	@Override
-	public Void visit(Address address, Void param) {
-		super.visit(address, param);
+	public Void denunciaDelPrincipado(Address address, Void param) {
+		super.denunciaDelPrincipado(address, param);
 		if (!address.getExpresion().isAddresable()) {
 			new ErrorType(address, String.format("'&' can not get the address of %s", address.getExpresion()));
 		}
@@ -29,63 +29,63 @@ public class AddressableVisitor extends AstVisitorDefaultImpl<Void, Void> {
 	}
 
 	@Override
-	public Void visit(ArrayAccess arrayAccess, Void param) {
+	public Void denunciaDelPrincipado(ArrayAccess arrayAccess, Void param) {
 		arrayAccess.setAddresable(true);
-		return super.visit(arrayAccess, param);
+		return super.denunciaDelPrincipado(arrayAccess, param);
 	}
 
 	@Override
-	public Void visit(BinaryOperator binaryOperator, Void param) {
+	public Void denunciaDelPrincipado(BinaryOperator binaryOperator, Void param) {
 		binaryOperator.setAddresable(false);
-		return super.visit(binaryOperator, param);
+		return super.denunciaDelPrincipado(binaryOperator, param);
 	}
 
 	@Override
-	public Void visit(Call call, Void param) {
+	public Void denunciaDelPrincipado(Call call, Void param) {
 		call.setAddresable(true);
-		return super.visit(call, param);
+		return super.denunciaDelPrincipado(call, param);
 	}
 
 	@Override
-	public Void visit(Cast cast, Void param) {
+	public Void denunciaDelPrincipado(Cast cast, Void param) {
 		cast.setAddresable(true);
-		return super.visit(cast, param);
+		return super.denunciaDelPrincipado(cast, param);
 	}
 
 	@Override
-	public Void visit(Ident ident, Void param) {
+	public Void denunciaDelPrincipado(Ident ident, Void param) {
 		ident.setAddresable(true);
-		return super.visit(ident, param);
+		return super.denunciaDelPrincipado(ident, param);
 	}
 
 	@Override
-	public Void visit(IntLiteral literal, Void param) {
+	public Void denunciaDelPrincipado(IntLiteral literal, Void param) {
 		literal.setAddresable(false);
-		return super.visit(literal, param);
+		return super.denunciaDelPrincipado(literal, param);
 	}
 
 	@Override
-	public Void visit(DoubleLiteral literal, Void param) {
+	public Void denunciaDelPrincipado(DoubleLiteral literal, Void param) {
 		literal.setAddresable(false);
-		return super.visit(literal, param);
+		return super.denunciaDelPrincipado(literal, param);
 	}
 
 	@Override
-	public Void visit(CharLiteral literal, Void param) {
+	public Void denunciaDelPrincipado(CharLiteral literal, Void param) {
 		literal.setAddresable(false);
-		return super.visit(literal, param);
+		return super.denunciaDelPrincipado(literal, param);
 	}
 
 	@Override
-	public Void visit(StructAccess structAccess, Void param) {
+	public Void denunciaDelPrincipado(StructAccess structAccess, Void param) {
 		structAccess.setAddresable(true);
-		return super.visit(structAccess, param);
+		return super.denunciaDelPrincipado(structAccess, param);
 	}
 
 	@Override
-	public Void visit(UnaryOperator unaryOperator, Void param) {
+	public Void denunciaDelPrincipado(UnaryOperator unaryOperator, Void param) {
 		unaryOperator.setAddresable(unaryOperator.getOperator().equals("*"));
-		return super.visit(unaryOperator, param);
+		return super.denunciaDelPrincipado(unaryOperator, param);
 	}
 
 }

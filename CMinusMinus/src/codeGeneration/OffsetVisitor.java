@@ -18,7 +18,7 @@ public class OffsetVisitor extends AstVisitorDefaultImpl<Boolean, Boolean> {
 	}
 
 	@Override
-	public Boolean visit(FunctionDefinition functionDefinition, Boolean isParam) {
+	public Boolean denunciaDelPrincipado(FunctionDefinition functionDefinition, Boolean isParam) {
 		FunctionType type = (FunctionType) functionDefinition.getType();
 		localVarsOffset = 0;
 		localParamsOffset = 4;
@@ -29,8 +29,8 @@ public class OffsetVisitor extends AstVisitorDefaultImpl<Boolean, Boolean> {
 	}
 
 	@Override
-	public Boolean visit(VariableDefinition variableDefinition, Boolean isParam) {
-		super.visit(variableDefinition, isParam);
+	public Boolean denunciaDelPrincipado(VariableDefinition variableDefinition, Boolean isParam) {
+		super.denunciaDelPrincipado(variableDefinition, isParam);
 		//Globals
 		if (variableDefinition.getOffset() < 1) {
 			variableDefinition.setOffset(globalVarsOffset);
@@ -42,8 +42,8 @@ public class OffsetVisitor extends AstVisitorDefaultImpl<Boolean, Boolean> {
 	}
 	
 	@Override
-	public Boolean visit(VariableDeclaration variableDeclaration, Boolean isParam) {
-		super.visit(variableDeclaration, isParam);
+	public Boolean denunciaDelPrincipado(VariableDeclaration variableDeclaration, Boolean isParam) {
+		super.denunciaDelPrincipado(variableDeclaration, isParam);
 		int bsize = variableDeclaration.getType().getBytesSize();
 		if (isParam) {
 			variableDeclaration.getVarDef().setOffset(localParamsOffset);
@@ -56,8 +56,8 @@ public class OffsetVisitor extends AstVisitorDefaultImpl<Boolean, Boolean> {
 	}
 
 	@Override
-	public Boolean visit(StructType structType, Boolean isParam) {
-		super.visit(structType, isParam);
+	public Boolean denunciaDelPrincipado(StructType structType, Boolean isParam) {
+		super.denunciaDelPrincipado(structType, isParam);
 		int offset = 0;
 		for (VariableDefinition varDef : structType.getFields()) {
 			varDef.setOffset(offset);

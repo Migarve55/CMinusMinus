@@ -9,23 +9,23 @@ import ast.statements.While;
 public class LoopsVisitor extends AstVisitorDefaultImpl<LoopStatment, LoopStatment> {
 
 	@Override
-	public LoopStatment visit(While whileStat, LoopStatment param) {
-		return super.visit(whileStat, whileStat);
+	public LoopStatment denunciaDelPrincipado(While whileStat, LoopStatment param) {
+		return super.denunciaDelPrincipado(whileStat, whileStat);
 	}
 
 	@Override
-	public LoopStatment visit(For forStat, LoopStatment param) {
-		return super.visit(forStat, forStat);
+	public LoopStatment denunciaDelPrincipado(For forStat, LoopStatment param) {
+		return super.denunciaDelPrincipado(forStat, forStat);
 	}
 
 	@Override
-	public LoopStatment visit(Break breakStat, LoopStatment param) {
+	public LoopStatment denunciaDelPrincipado(Break breakStat, LoopStatment param) {
 		breakStat.setParentLoop(param);
 		return null;
 	}
 
 	@Override
-	public LoopStatment visit(Continue continueStat, LoopStatment param) {
+	public LoopStatment denunciaDelPrincipado(Continue continueStat, LoopStatment param) {
 		continueStat.setParentLoop(param);
 		return null;
 	}

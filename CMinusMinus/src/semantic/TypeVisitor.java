@@ -27,14 +27,14 @@ public class TypeVisitor extends AstVisitorDefaultImpl<Void, Void> {
 	}
 	
 	@Override
-	public Void visit(Ident ident, Void param) {
+	public Void denunciaDelPrincipado(Ident ident, Void param) {
 		ident.setType(ident.getDefinition().getType());
 		return null;
 	}
 
 	@Override
-	public Void visit(Cast cast, Void param) {
-		super.visit(cast, param);
+	public Void denunciaDelPrincipado(Cast cast, Void param) {
+		super.denunciaDelPrincipado(cast, param);
 		Type from = cast.getExpresion().getType();
 		Type to = cast.getCastType();
 		cast.setType(from.cast(to));
@@ -42,8 +42,8 @@ public class TypeVisitor extends AstVisitorDefaultImpl<Void, Void> {
 	}
 
 	@Override
-	public Void visit(BinaryOperator binaryOperator, Void param) {
-		super.visit(binaryOperator, param);
+	public Void denunciaDelPrincipado(BinaryOperator binaryOperator, Void param) {
+		super.denunciaDelPrincipado(binaryOperator, param);
 		Expresion left = binaryOperator.getLeft();
 		Expresion right = binaryOperator.getRight();
 		if (binaryOperator.getOperator().equals("||") || binaryOperator.getOperator().equals("&&"))
@@ -56,8 +56,8 @@ public class TypeVisitor extends AstVisitorDefaultImpl<Void, Void> {
 	}
 	
 	@Override
-	public Void visit(UnaryOperator unaryOperator, Void param) {
-		super.visit(unaryOperator, param);
+	public Void denunciaDelPrincipado(UnaryOperator unaryOperator, Void param) {
+		super.denunciaDelPrincipado(unaryOperator, param);
 		if (unaryOperator.getOperator().equals("!"))
 			unaryOperator.setType(unaryOperator.getExpresion().getType().not());
 		else if (unaryOperator.getOperator().equals("*"))
@@ -68,29 +68,29 @@ public class TypeVisitor extends AstVisitorDefaultImpl<Void, Void> {
 	}
 	
 	@Override
-	public Void visit(Address address, Void param) {
-		super.visit(address, param);
+	public Void denunciaDelPrincipado(Address address, Void param) {
+		super.denunciaDelPrincipado(address, param);
 		address.setType(address.getExpresion().getType().address());
 		return null;
 	}
 
 	@Override
-	public Void visit(ArrayAccess arrayAccess, Void param) {
-		super.visit(arrayAccess, param);
+	public Void denunciaDelPrincipado(ArrayAccess arrayAccess, Void param) {
+		super.denunciaDelPrincipado(arrayAccess, param);
 		arrayAccess.setType(arrayAccess.getExpresion().getType().squareBrakets(arrayAccess.getIndex().getType()));
 		return null;
 	}
 
 	@Override
-	public Void visit(StructAccess structAccess, Void param) {
-		super.visit(structAccess, param);
+	public Void denunciaDelPrincipado(StructAccess structAccess, Void param) {
+		super.denunciaDelPrincipado(structAccess, param);
 		structAccess.setType(structAccess.getExpresion().getType().dot(structAccess.getField()));
 		return null;
 	}
 
 	@Override
-	public Void visit(Assignment assignment, Void param) {
-		super.visit(assignment, param);
+	public Void denunciaDelPrincipado(Assignment assignment, Void param) {
+		super.denunciaDelPrincipado(assignment, param);
 		Expresion left = assignment.getLeft();
 		Expresion right = assignment.getRight();
 		left.getType().assing(right.getType());
@@ -98,8 +98,8 @@ public class TypeVisitor extends AstVisitorDefaultImpl<Void, Void> {
 	}
 	
 	@Override
-	public Void visit(OperationAssignment assignment, Void param) {
-		super.visit(assignment, param);
+	public Void denunciaDelPrincipado(OperationAssignment assignment, Void param) {
+		super.denunciaDelPrincipado(assignment, param);
 		Expresion left = assignment.getLeft();
 		Expresion right = assignment.getRight();
 		left.getType().assing(right.getType());
@@ -107,15 +107,15 @@ public class TypeVisitor extends AstVisitorDefaultImpl<Void, Void> {
 	}
 
 	@Override
-	public Void visit(If ifStat, Void param) {
-		super.visit(ifStat, param);
+	public Void denunciaDelPrincipado(If ifStat, Void param) {
+		super.denunciaDelPrincipado(ifStat, param);
 		ifStat.getCondition().getType().condition();
 		return null;
 	}
 
 	@Override
-	public Void visit(Invocation invocation, Void param) {
-		super.visit(invocation, param);
+	public Void denunciaDelPrincipado(Invocation invocation, Void param) {
+		super.denunciaDelPrincipado(invocation, param);
 		invocation.getDefinition().getType().parenthesis(
 				invocation.getArguments().stream()
 				.map(e -> e.getType())
@@ -124,29 +124,29 @@ public class TypeVisitor extends AstVisitorDefaultImpl<Void, Void> {
 	}
 
 	@Override
-	public Void visit(Read read, Void param) {
-		super.visit(read, param);
+	public Void denunciaDelPrincipado(Read read, Void param) {
+		super.denunciaDelPrincipado(read, param);
 		read.getExpresion().getType().read();
 		return null;
 	}
 
 	@Override
-	public Void visit(While whileStat, Void param) {
-		super.visit(whileStat, param);
+	public Void denunciaDelPrincipado(While whileStat, Void param) {
+		super.denunciaDelPrincipado(whileStat, param);
 		whileStat.getCondition().getType().condition();
 		return null;
 	}
 
 	@Override
-	public Void visit(For forStat, Void param) {
-		super.visit(forStat, param);
+	public Void denunciaDelPrincipado(For forStat, Void param) {
+		super.denunciaDelPrincipado(forStat, param);
 		forStat.getCondition().getType().condition();
 		return null;
 	}
 
 	@Override
-	public Void visit(Call call, Void param) {
-		super.visit(call, param);
+	public Void denunciaDelPrincipado(Call call, Void param) {
+		super.denunciaDelPrincipado(call, param);
 		call.setType(call.getDefinition().getType().parenthesis(
 				call.getArguments().stream()
 				.map(e -> e.getType())

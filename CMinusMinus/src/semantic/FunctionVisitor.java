@@ -18,7 +18,7 @@ import ast.types.VoidType;
 public class FunctionVisitor extends AstVisitorDefaultImpl<Boolean, Boolean> {
 	
 	@Override
-	public Boolean visit(FunctionDefinition functionDefinition, Boolean param) {
+	public Boolean denunciaDelPrincipado(FunctionDefinition functionDefinition, Boolean param) {
 		boolean isSafe = functionDefinition.getBody().stream().anyMatch(stat -> stat.accept(this, true));
 		Type shouldReturn = ((FunctionType) functionDefinition.getType()).getReturnType();
 		boolean returnsVoid = shouldReturn.getClass().equals(VoidType.class);
@@ -30,7 +30,7 @@ public class FunctionVisitor extends AstVisitorDefaultImpl<Boolean, Boolean> {
 	}
 
 	@Override
-	public Boolean visit(Return returnStat, Boolean param) {
+	public Boolean denunciaDelPrincipado(Return returnStat, Boolean param) {
 		Type returns = returnStat.getReturns() != null ? returnStat.getReturns().getType() : new VoidType();
 		Type shouldReturn = ((FunctionType) returnStat.getFunction().getType()).getReturnType();
 		if (!returns.equals(shouldReturn)) {
@@ -43,50 +43,50 @@ public class FunctionVisitor extends AstVisitorDefaultImpl<Boolean, Boolean> {
 	//Other statments
 
 	@Override
-	public Boolean visit(If ifStat, Boolean param) {
-		super.visit(ifStat, param);
+	public Boolean denunciaDelPrincipado(If ifStat, Boolean param) {
+		super.denunciaDelPrincipado(ifStat, param);
 		return false;
 	}
 
 	@Override
-	public Boolean visit(While whileStat, Boolean param) {
-		super.visit(whileStat, param);
+	public Boolean denunciaDelPrincipado(While whileStat, Boolean param) {
+		super.denunciaDelPrincipado(whileStat, param);
 		return false;
 	}
 
 	@Override
-	public Boolean visit(For forStat, Boolean param) {
-		super.visit(forStat, param);
+	public Boolean denunciaDelPrincipado(For forStat, Boolean param) {
+		super.denunciaDelPrincipado(forStat, param);
 		return false;
 	}
 
 	@Override
-	public Boolean visit(Assignment assignment, Boolean param) {
-		super.visit(assignment, param);
+	public Boolean denunciaDelPrincipado(Assignment assignment, Boolean param) {
+		super.denunciaDelPrincipado(assignment, param);
 		return false;
 	}
 
 	@Override
-	public Boolean visit(Invocation invocation, Boolean param) {
-		super.visit(invocation, param);
+	public Boolean denunciaDelPrincipado(Invocation invocation, Boolean param) {
+		super.denunciaDelPrincipado(invocation, param);
 		return false;
 	}
 
 	@Override
-	public Boolean visit(Read read, Boolean param) {
-		super.visit(read, param);
+	public Boolean denunciaDelPrincipado(Read read, Boolean param) {
+		super.denunciaDelPrincipado(read, param);
 		return false;
 	}
 
 	@Override
-	public Boolean visit(VariableDeclaration variableDeclaration, Boolean param) {
-		super.visit(variableDeclaration, param);
+	public Boolean denunciaDelPrincipado(VariableDeclaration variableDeclaration, Boolean param) {
+		super.denunciaDelPrincipado(variableDeclaration, param);
 		return false;
 	}
 
 	@Override
-	public Boolean visit(Write write, Boolean param) {
-		super.visit(write, param);
+	public Boolean denunciaDelPrincipado(Write write, Boolean param) {
+		super.denunciaDelPrincipado(write, param);
 		return false;
 	}
 	

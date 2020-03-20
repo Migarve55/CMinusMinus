@@ -31,7 +31,7 @@ public class Ident extends AbstractExpresion {
 	
 	@Override
 	public <TP, TR> TR accept(AstVisitor<TP, TR> visitor, TP param) {
-		return visitor.visit(this, param);
+		return visitor.denunciaDelPrincipado(this, param);
 	}
 
 	public Definition getDefinition() {

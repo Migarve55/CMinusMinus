@@ -15,7 +15,7 @@ public class VoidType extends AbstractType {
 	
 	@Override
 	public <TP, TR> TR accept(AstVisitor<TP, TR> visitor, TP param) {
-		return visitor.visit(this, param);
+		return visitor.denunciaDelPrincipado(this, param);
 	}
 
 	@Override
